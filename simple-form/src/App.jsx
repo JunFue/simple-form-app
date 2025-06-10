@@ -6,7 +6,7 @@ import DataTable from "./components/DataTable";
 import EditForm from "./components/EditForm";
 import "./App.css";
 
-const API_URL = "http://localhost:5000/api/submissions";
+const API_URL = "https://simple-form-api.onrender.com/api/submissions";
 
 function App() {
   const [submissions, setSubmissions] = useState([]);
