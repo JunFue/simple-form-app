@@ -1,0 +1,420 @@
+/* src/App.css */
+
+/* 1. CSS Variables for easy theme management */
+:root {
+  --primary-color: #007bff;
+  --primary-color-dark: #0056b3;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --surface-color: #ffffff;
+  --text-color: #343a40;
+  --border-color: #dee2e6;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+/* 2. Basic Reset and Global Styles */
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.app-header h1 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* 3. Form Styling */
+.form-container {
+  background: var(--surface-color);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.form-container h2 {
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Important for padding and width */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+/* 4. Table Styling */
+.table-container {
+  background: var(--surface-color);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  flex: 2;
+  min-width: 400px;
+  overflow-x: auto; /* For responsiveness */
+}
+
+/* New styles for table header controls */
+.table-header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.table-header-controls h2 {
+  margin: 0; /* Remove default margin from h2 */
+}
+
+.fetch-data-btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--success-color); /* Using success color for this action */
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.fetch-data-btn:hover {
+  background-color: #1e7e34; /* Darker shade of success color */
+}
+
+.fetch-data-btn:active {
+  transform: translateY(1px);
+}
+
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* margin-top: 1.5rem; Removed because margin is now on .table-header-controls */
+}
+
+.data-table th, .data-table td {
+  padding: 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table thead th {
+  background-color: #f2f2f2;
+  font-weight: 700;
+  color: #333;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.no-data-message {
+  text-align: center;
+  color: var(--secondary-color);
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--surface-color);
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+
+/* 5. Responsive Design */
+@media (max-width: 900px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-container, .table-container {
+    width: 100%;
+    max-width: 600px;
+  }
+  .table-header-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem; /* Add some space between h2 and button when stacked */
+  }
+}
+
+@media (max-width: 600px) {
+  /* On small screens, we can use a trick to make tables more readable */
+  .data-table thead {
+    display: none; /* Hide the headers */
+  }
+  .data-table, .data-table tbody, .data-table tr, .data-table td {
+    display: block;
+    width: 100%;
+  }
+  .data-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+  }
+  .data-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .data-table td:before {
+    content: attr(data-label); /* Use the data-label attribute as a pseudo-header */
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+
+/* Add these new styles at the end or in an appropriate section */
+
+.error-message {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--error-color);
+  color: white;
+  border-radius: var(--border-radius);
+  text-align: center;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.loading-message {
+  text-align: center;
+  color: var(--secondary-color);
+  margin-top: 2rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* Adjustments for button disabled state, if not already covered by browser defaults */
+.submit-btn:disabled, .fetch-data-btn:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.action-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.delete-btn {
+  background-color: var(--error-color); /* Use the red error color for delete */
+}
+
+.delete-btn:hover {
+  background-color: #c82333; /* A darker shade of red */
+}
+
+/* NEW: Styling for the edit button */
+.action-btn.edit-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.action-btn.edit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Ensure data-label for ID in responsive table */
+@media (max-width: 600px) {
+  .data-table td:before {
+    content: attr(data-label); /* Use the data-label attribute as a pseudo-header */
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+
+
+.modal-overlay {
+  position: fixed; /* Sit on top of the page content */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Make sure it's on top */
+}
+
+.modal-content {
+  background: var(--surface-color);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 500px;
+  animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.modal-actions button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-cancel {
+  background-color: var(--secondary-color);
+  color: white;
+}
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+.btn-update {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-update:hover {
+  background-color: var(--primary-color-dark);
+}
+
+/* Also, add a new style for the edit button in the table */
+.action-btn.edit-btn {
+  background-color: var(--primary-color);
+  margin-right: 5px; /* Add some space between Edit and Delete */
+}
+
+.action-btn.edit-btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+/* Make sure this is in your CSS already, if not, add it */
+.action-btn:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
